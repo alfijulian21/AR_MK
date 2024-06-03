@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+</head>
+<body>
+    <a-scene mindar-image="imageTargetSrc: ./targets/newTargets.mind; maxTrack: 4" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+            <a-asset-item id="wingplaneModel" src="./assets/planes/wingplane/scene.gltf"></a-asset-item>
+            <a-asset-item id="artplaneModel" src="./assets/planes/artplane/scene.gltf"></a-asset-item>
+            <a-asset-item id="swingplaneModel" src="./assets/planes/swingplane/scene.gltf"></a-asset-item>
+            <a-asset-item id="flyingplaneModel" src="./assets/planes/flyingplane/scene.gltf"></a-asset-item>
+
+            <a-image id="wingplane" src="./card/wingplane.png"></a-image>
+            <a-image id="artplane" src="./card/artplane.png"></a-image>
+            <a-image id="swingplane" src="./card/swingplane.png"></a-image>
+            <a-image id="flyingplane" src="./card/flyingplane.png"></a-image>
+        </a-assets>
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <!-- Update targetIndex to match newTargets.mind -->
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-image scale="2 1.25" src="#wingplane"></a-image>
+            <a-gltf-model rotation="90 -0 0" position="0.15 -0.45 0.3" scale="3 3 3" src="#wingplaneModel" animation-mixer></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-image-target="targetIndex: 1">
+            <a-image scale="2 1.25" src="#artplane"></a-image>
+            <a-gltf-model rotation="90 -0 0" position="0.15 -0.45 0.3" scale="0.01 0.01 0.01" src="#artplaneModel" animation-mixer></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-image-target="targetIndex: 2">
+            <a-image scale="2 1.25" src="#swingplane"></a-image>
+            <a-gltf-model rotation="90 0 0 " position="0 -0.25 0" scale="0.3 0.3 0.3" src="#swingplaneModel" animation-mixer></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-image-target="targetIndex: 3">
+            <a-image scale="2 1.25" src="#flyingplane"></a-image>
+            <a-gltf-model rotation="90 -0 0" position="0.15 -0.45 0.3" scale="0.3 0.3 0.3" src="#flyingplaneModel" animation-mixer></a-gltf-model>
+        </a-entity>
+    </a-scene>
+</body>
+</html>
