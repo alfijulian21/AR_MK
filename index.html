@@ -1,22 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <title>Augmented Reality</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function showMainContent() {
+            document.getElementById('splash').style.display = 'none';
+            document.getElementById('main-content').style.display = 'flex';
+            document.querySelector('.section').style.display = 'block'; // Show the first section by default
+        }
+
+        window.onload = function() {
+            setTimeout(showMainContent, 3000);
+
+            const menuLinks = document.querySelectorAll('.menu-link');
+            menuLinks.forEach(function(menuLink) {
+                menuLink.addEventListener('click', function(event) {
+                    menuLinks.forEach(function(link) {
+                        link.classList.remove('selected');
+                    });
+
+                    this.classList.add('selected');
+
+                    const sections = document.querySelectorAll('.section');
+                    sections.forEach(function(section) {
+                        section.style.display = 'none';
+                    });
+
+                    const selectedSection = document.querySelector('.' + this.getAttribute('data-menu'));
+                    selectedSection.style.display = 'block';
+
+                    event.preventDefault();
+                });
+            });
+        };
+    </script>
 </head>
+
 <body>
-    <a-scene mindar-image="imageTargetSrc:  https://alfijulian21.github.io/AR_MK; maxTrack: 1" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-        <a-assets>
-            <img id="myTargetImage" src="https://drive.google.com/uc?export=view&id=1ZX37gFlIAHqD5GP-h_zUusfIEE_ADl77"/>
-            <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
-        </a-assets>
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-        <a-entity mindar-image-target="targetIndex: 0">
-            <a-plane src="#myTargetImage" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
-                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
-        </a-entity>
-    </a-scene>
+    <div id="splash">
+        <img src="./logo.png" alt="Logo">
+        <h1>Welcome to My Website</h1>
+        <p>Loading...</p>
+    </div>
+    
+    <div id="main-content">
+        <div class="title">
+            <h1>Augmented Reality</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#" class="menu-link selected" data-menu="about">About</a></li>
+                <li><a href="#" class="menu-link" data-menu="guide">Guide</a></li>
+                <li><a href="#" class="menu-link" data-menu="marker">Marker</a></li>
+                <li><a href="#" class="menu-link" data-menu="ar">AR</a></li>
+            </ul>
+        </nav>
+
+        <div class="section about">
+            <div class="column">
+                <h2>Keterangan Singkat</h2>
+                <p>Website ini menyediakan layanan augmented reality (AR) yang memungkinkan pengguna untuk menampilkan model 3D dengan menggunakan marker. Marker tersebut dapat diunduh melalui menu "Marker" yang tersedia. Dengan memanfaatkan teknologi AR, pengguna dapat melihat model 3D tersebut secara interaktif melalui perangkat mereka.</p>
+            </div>
+            <div class="column">
+                <h2>Developer</h2>
+                <p>Nama: Alfi Julian Azhari</p>
+                <p>NPM: 2115061021</p>
+                <p>Email: idjulian11@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="section guide">
+            <h2 class="column">Cara Penggunaan Marker</h2>
+            <p>
+                <ol>
+                    <li class="list">Cari menu atau tombol "Marker" di navigasi utama situs.</li>
+                    <li class="list">Klik untuk membuka halaman marker.</li>
+                    <li class="list">Unduh marker yang tersedia dengan mengklik tombol unduh atau download.</li>
+                    <li class="list">Setelah diunduh, cetak marker tersebut dengan printer. Pastikan marker dicetak dengan kualitas yang baik untuk memastikan pengenalan yang optimal.</li>
+                    <li class="list">Kembali ke halaman utama atau ke halaman khusus AR di website.</li>
+                    <li class="list">Klik menu AR untuk memulai fitur AR.</li>
+                    <li class="list">Arahkan Kamera ke Marker yang telah dicetak.</li>
+                    <li class="list">Model 3D akan muncul di layar perangkat Anda di atas marker yang dikenali oleh kamera.</li>
+                </ol>
+            </p>
+        </div>
+        
+        <div class="section marker">
+            <h2 class="column">Link PDF</h2>
+            <a href="./card.pdf">Download PDF</a>
+            <iframe src="./card.pdf" width="100%" height="600px"></iframe>
+        </div> 
+        
+        <div class="section ar">
+            <h2 class="column">Link GITHUB.IO</h2>
+            <a href="https://alfijulian21.github.io/AR_MK/image-tracking.html">Visit GitHub.io</a>
+        </div>
+    </div>
 </body>
 </html>
