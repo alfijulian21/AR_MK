@@ -1,0 +1,113 @@
+/* styles.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    color: #167881;
+}
+
+/* Splash Screen */
+#splash {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+#splash img {
+    width: 150px;
+    height: auto;
+}
+
+#main-content {
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Title */
+.title h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Navigation Menu */
+nav {
+    background-color: #444;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+nav ul li a.selected,
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* Sections */
+.section {
+    display: none;
+    margin: 20px 0;
+}
+
+.section h2 {
+    color: #555;
+}
+
+.column {
+    margin: 10px 0;
+}
+
+.column p {
+    line-height: 1.6;
+}
+
+/* Guide List */
+.list {
+    margin-bottom: 10px;
+}
+
+/* Marker and AR sections */
+.section a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.section a:hover {
+    text-decoration: underline;
+}
+
+/* PDF iframe */
+iframe {
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
